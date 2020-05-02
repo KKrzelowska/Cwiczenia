@@ -1,0 +1,27 @@
+"""
+Generator kodów pocztowych pomiędzy "79-900" i "80-155"
+"""
+def gen_kod_pocz(string1, string2):
+    tab_kodow_pocztowych = []
+    zmienna_str1 = ''
+    zmienna_str1 += string1[3] + string1[4] + string1[5]
+    zmienna_int1 = int(zmienna_str1)
+    zmienna_int2 = 0
+
+    for i in range(0, 99):
+        zmienna_int1 += 1
+        tab_kodow_pocztowych.append(str(string1[0] + string1[1] + '-' + str(zmienna_int1)))
+    for i in range(0, 156):
+        if(zmienna_int2 < 10):
+            tab_kodow_pocztowych.append(str(string2[0] + string2[1] + '-00' + str(zmienna_int2)))
+        if(zmienna_int2 <100 and zmienna_int2 > 10):
+            tab_kodow_pocztowych.append(str(string2[0] + string2[1] + '-0' + str(zmienna_int2)))
+        if(zmienna_int2 > 100):
+            tab_kodow_pocztowych.append(str(string2[0] + string2[1] + '-' + str(zmienna_int2)))
+        zmienna_int2 += 1
+
+    return tab_kodow_pocztowych
+
+string1 = '79-900'
+string2 = '80-155'
+print(gen_kod_pocz(string1, string2))
